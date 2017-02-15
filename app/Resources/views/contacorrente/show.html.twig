@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contacorrente</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Saldo</th>
+                <td>{{ contaCorrente.saldo }}</td>
+            </tr>
+            <tr>
+                <th>Cotasdisponiveis</th>
+                <td>{{ contaCorrente.cotasDisponiveis }}</td>
+            </tr>
+            <tr>
+                <th>Concorid</th>
+                <td>{{ contaCorrente.concorId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contacorrente_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('contacorrente_edit', { 'id': contaCorrente.concorId }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

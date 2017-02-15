@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Movimentacaocotum</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idconta</th>
+                <td>{{ movimentacaoCotum.idConta }}</td>
+            </tr>
+            <tr>
+                <th>Idcontaterceiro</th>
+                <td>{{ movimentacaoCotum.idContaTerceiro }}</td>
+            </tr>
+            <tr>
+                <th>Quantidade</th>
+                <td>{{ movimentacaoCotum.quantidade }}</td>
+            </tr>
+            <tr>
+                <th>Valorunitario</th>
+                <td>{{ movimentacaoCotum.valorUnitario }}</td>
+            </tr>
+            <tr>
+                <th>Valortotal</th>
+                <td>{{ movimentacaoCotum.valorTotal }}</td>
+            </tr>
+            <tr>
+                <th>Datahora</th>
+                <td>{% if movimentacaoCotum.datahora %}{{ movimentacaoCotum.datahora|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Movcotid</th>
+                <td>{{ movimentacaoCotum.movcotId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movimentacaocota_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('movimentacaocota_edit', { 'id': movimentacaoCotum.movcotId }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

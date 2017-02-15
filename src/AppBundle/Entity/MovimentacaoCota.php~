@@ -1,0 +1,229 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * MovimentacaoCota
+ */
+class MovimentacaoCota
+{
+    /**
+     * @var integer
+     */
+    private $idConta;
+
+    /**
+     * @var integer
+     */
+    private $idContaTerceiro;
+
+    /**
+     * @var integer
+     */
+    private $quantidade;
+
+    /**
+     * @var string
+     */
+    private $valorUnitario;
+
+    /**
+     * @var string
+     */
+    private $valorTotal;
+
+    /**
+     * @var \DateTime
+     */
+    private $datahora;
+
+    /**
+     * @var integer
+     */
+    private $movcotId;
+
+    /**
+     * @var \AppBundle\Entity\ContaCorrente
+     */
+    private $concor;
+
+
+    /**
+     * Set idConta
+     *
+     * @param integer $idConta
+     *
+     * @return MovimentacaoCota
+     */
+    public function setIdConta($idConta)
+    {
+        $this->idConta = $idConta;
+
+        return $this;
+    }
+
+    /**
+     * Get idConta
+     *
+     * @return integer
+     */
+    public function getIdConta()
+    {
+        return $this->idConta;
+    }
+
+    /**
+     * Set idContaTerceiro
+     *
+     * @param integer $idContaTerceiro
+     *
+     * @return MovimentacaoCota
+     */
+    public function setIdContaTerceiro($idContaTerceiro)
+    {
+        $this->idContaTerceiro = $idContaTerceiro;
+
+        return $this;
+    }
+
+    /**
+     * Get idContaTerceiro
+     *
+     * @return integer
+     */
+    public function getIdContaTerceiro()
+    {
+        return $this->idContaTerceiro;
+    }
+
+    /**
+     * Set quantidade
+     *
+     * @param integer $quantidade
+     *
+     * @return MovimentacaoCota
+     */
+    public function setQuantidade($quantidade)
+    {
+        $this->quantidade = $quantidade;
+
+        return $this;
+    }
+
+    /**
+     * Get quantidade
+     *
+     * @return integer
+     */
+    public function getQuantidade()
+    {
+        return $this->quantidade;
+    }
+
+    /**
+     * Set valorUnitario
+     *
+     * @param string $valorUnitario
+     *
+     * @return MovimentacaoCota
+     */
+    public function setValorUnitario($valorUnitario)
+    {
+        $this->valorUnitario = $valorUnitario;
+
+        return $this;
+    }
+
+    /**
+     * Get valorUnitario
+     *
+     * @return string
+     */
+    public function getValorUnitario()
+    {
+        return $this->valorUnitario;
+    }
+
+    /**
+     * Set valorTotal
+     *
+     * @param string $valorTotal
+     *
+     * @return MovimentacaoCota
+     */
+    public function setValorTotal($valorTotal)
+    {
+        $this->valorTotal = $valorTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get valorTotal
+     *
+     * @return string
+     */
+    public function getValorTotal()
+    {
+        return $this->valorTotal;
+    }
+
+    /**
+     * Set datahora
+     *
+     * @param \DateTime $datahora
+     *
+     * @return MovimentacaoCota
+     */
+    public function setDatahora($datahora)
+    {
+        $this->datahora = $datahora;
+
+        return $this;
+    }
+
+    /**
+     * Get datahora
+     *
+     * @return \DateTime
+     */
+    public function getDatahora()
+    {
+        return $this->datahora;
+    }
+
+    /**
+     * Get movcotId
+     *
+     * @return integer
+     */
+    public function getMovcotId()
+    {
+        return $this->movcotId;
+    }
+
+    /**
+     * Set concor
+     *
+     * @param \AppBundle\Entity\ContaCorrente $concor
+     *
+     * @return MovimentacaoCota
+     */
+    public function setConcor(\AppBundle\Entity\ContaCorrente $concor = null)
+    {
+        $this->concor = $concor;
+
+        return $this;
+    }
+
+    /**
+     * Get concor
+     *
+     * @return \AppBundle\Entity\ContaCorrente
+     */
+    public function getConcor()
+    {
+        return $this->concor;
+    }
+}
+

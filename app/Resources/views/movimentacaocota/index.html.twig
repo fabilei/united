@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Movimentacaocotas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idconta</th>
+                <th>Idcontaterceiro</th>
+                <th>Quantidade</th>
+                <th>Valorunitario</th>
+                <th>Valortotal</th>
+                <th>Datahora</th>
+                <th>Movcotid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movimentacaoCotum in movimentacaoCotas %}
+            <tr>
+                <td><a href="{{ path('movimentacaocota_show', { 'id': movimentacaoCotum.movcotId }) }}">{{ movimentacaoCotum.idConta }}</a></td>
+                <td>{{ movimentacaoCotum.idContaTerceiro }}</td>
+                <td>{{ movimentacaoCotum.quantidade }}</td>
+                <td>{{ movimentacaoCotum.valorUnitario }}</td>
+                <td>{{ movimentacaoCotum.valorTotal }}</td>
+                <td>{% if movimentacaoCotum.datahora %}{{ movimentacaoCotum.datahora|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ movimentacaoCotum.movcotId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('movimentacaocota_show', { 'id': movimentacaoCotum.movcotId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('movimentacaocota_edit', { 'id': movimentacaoCotum.movcotId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movimentacaocota_new') }}">Create a new movimentacaoCotum</a>
+        </li>
+    </ul>
+{% endblock %}

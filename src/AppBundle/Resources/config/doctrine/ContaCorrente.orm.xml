@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ContaCorrente" table="conta_corrente">
+    <unique-constraints>
+      <unique-constraint name="concor_id" columns="concor_id"/>
+    </unique-constraints>
+    <id name="concorId" type="bigint" column="concor_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="saldo" type="decimal" column="saldo" precision="18" scale="8" nullable="false"/>
+    <field name="cotasDisponiveis" type="integer" column="cotas_disponiveis" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

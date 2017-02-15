@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contacorrentes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Saldo</th>
+                <th>Cotasdisponiveis</th>
+                <th>Concorid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contaCorrente in contaCorrentes %}
+            <tr>
+                <td><a href="{{ path('contacorrente_show', { 'id': contaCorrente.concorId }) }}">{{ contaCorrente.saldo }}</a></td>
+                <td>{{ contaCorrente.cotasDisponiveis }}</td>
+                <td>{{ contaCorrente.concorId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contacorrente_show', { 'id': contaCorrente.concorId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contacorrente_edit', { 'id': contaCorrente.concorId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contacorrente_new') }}">Create a new contaCorrente</a>
+        </li>
+    </ul>
+{% endblock %}

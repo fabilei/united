@@ -1,0 +1,227 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+
+
+<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+
+    <script>
+    
+        
+     
+        function comprar()
+        {
+            var qtdCotas = $("#appbundle_livrotransacao_quantidadeCotas").val();
+            var valorCotas = $("#appbundle_livrotransacao_valorCotas").val();
+            
+            var dados = {
+                qtdCotas: qtdCotas,
+                valorCotas: valorCotas
+            };
+
+            $.post('http://localhost/united/web/app_dev.php/livrotransacao/comprar', dados, function(response)
+            {
+                alert('Compra realizada com sucesso');
+                
+                    
+                    $('.comprasVendas').html('');
+                    var html = '';
+                    var tipo = '';
+                    var status = '';
+                    $.each(response["livroTransacaos"], function(i, value)
+                    {
+                        if(value.tipo_operacao == 0){
+                            tipo = 'Compra';
+                        }else{
+                            tipo = 'Venda';
+                        }
+                        if(value.status == 0){
+                            status = 'Em Aberto';
+                        }else{
+                            status = 'Fechado';
+                        }
+                        html = html + '<tr>';   
+                        html = html + '<td>' + value.quantidade_cotas + '</td>';
+                        html = html + '<td>' + value.valor_cotas + '</td>';
+                        html = html + '<td>' +  tipo + '</td>';
+                        html = html + '<td>' + status + '</td>';
+                        html = html + '</tr>';
+                    });
+                    
+                    $('.comprasVendas').append(html);
+                
+
+            },'JSON');
+        }
+
+        function vender()
+        {
+            var qtdCotas = $("#appbundle_livrotransacaovenda_quantidadeCotas").val();
+            var valorCotas = $("#appbundle_livrotransacaovenda_valorCotas").val();
+            
+            var dados = {
+                qtdCotas: qtdCotas,
+                valorCotas: valorCotas
+            };
+
+            $.post('http://localhost/united/web/app_dev.php/livrotransacao/vender', dados, function(response)
+            {
+                alert('Venda realizada com sucesso');
+                    $('.comprasVendas').html('');
+                    var html = '';
+                    var tipo = '';
+                    var status = '';
+                    $.each(response["livroTransacaos"], function(i, value)
+                    {
+                        if(value.tipo_operacao == 0){
+                            tipo = 'Compra';
+                        }else{
+                            tipo = 'Venda';
+                        }
+                        if(value.status == 0){
+                            status = 'Em Aberto';
+                        }else{
+                            status = 'Fechado';
+                        }
+                        html = html + '<tr>';   
+                        html = html + '<td>' + value.quantidade_cotas + '</td>';
+                        html = html + '<td>' + value.valor_cotas + '</td>';
+                        html = html + '<td>' +  tipo + '</td>';
+                        html = html + '<td>' + status + '</td>';
+                        html = html + '</tr>';
+                    });
+                    
+                    $('.comprasVendas').append(html);
+                
+
+            },'JSON');
+        }
+
+        function atualizar()
+        {
+            Pusher.logToConsole = true;
+
+                var pusher = new Pusher('939ce1e989ceb6b401b5', 
+                {
+                    encrypted: true
+                });
+
+                var channel = pusher.subscribe('my-channel');
+                channel.bind('pusher:subscription_succeeded', function(data) 
+                {
+                    //console.log(data['name']);
+                    //console.log(data['message']);
+                    //console.log(response["livroTransacaos"]);
+                });
+
+
+            $.post('http://localhost/united/web/app_dev.php/livrotransacao/atualizar', '', function(response)
+            {
+                    $('.comprasVendas').html('');
+                    var html = '';
+                    var tipo = '';
+                    var status = '';
+                    $.each(response["livroTransacaos"], function(i, value)
+                    {
+                        if(value.tipo_operacao == 0)
+                        {
+                            tipo = 'Compra';
+                        }
+                        else
+                        {
+                            tipo = 'Venda';
+                        }
+                        if(value.status == 0)
+                        {
+                            status = 'Em Aberto';
+                        }
+                        else
+                        {
+                            status = 'Fechado';
+                        }
+                        html = html + '<tr>';   
+                        html = html + '<td>' + value.quantidade_cotas + '</td>';
+                        html = html + '<td>' + value.valor_cotas + '</td>';
+                        html = html + '<td>' +  tipo + '</td>';
+                        html = html + '<td>' + status + '</td>';
+                        html = html + '</tr>';
+                    });
+                    
+                    $('.comprasVendas').append(html);
+                
+
+            },'JSON');
+        }
+
+        function vender()
+        {
+            var qtdCotas = $("#appbundle_livrotransacaovenda_quantidadeCotas").val();
+            var valorCotas = $("#appbundle_livrotransacaovenda_valorCotas").val();
+            
+            var dados = {
+                qtdCotas: qtdCotas,
+                valorCotas: valorCotas
+            };
+
+            $.post('http://localhost/united/web/app_dev.php/livrotransacao/vender', dados, function(response)
+            {
+            
+                alert('Venda realizada com sucesso!!!');
+
+            },'JSON');
+        }
+
+        //atualizar a lista de compra e venda
+        var intervalo = window.setInterval(atualizar, 35000);
+
+    </script>
+    
+
+      
+    
+{% endblock %}
+
+{% block body %}
+
+    <h1>Compra</h1>
+
+
+    {{ form_start(formCompra) }}
+        {{ form_widget(formCompra) }}
+        <input type="button" onClick="comprar()" value="Comprar" />
+    {{ form_end(formCompra) }}
+
+
+    <h1>Venda</h1>
+
+    {{ form_start(formVenda) }}
+        {{ form_widget(formVenda) }}
+        <input type="button" onClick="vender()" value="Vender" />
+    {{ form_end(formVenda) }}
+
+    <h1>Transações Realizadas</h1>
+
+    <table id="listaLivro">
+        <thead>
+            <tr>
+                <th>Quantida de Cotas</th>
+                <th>Valor Cotas</th>
+                <th>Tipo Operação</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody class="comprasVendas">
+        {% for livroTransacao in livroTransacaos %}
+            <tr>
+                <td>{{ livroTransacao.quantidadeCotas }}</td>
+                <td>{{ livroTransacao.valorCotas }}</td>
+                <td>{% if livroTransacao.tipoOperacao %}Venda{% else %}Compra{% endif %}</td>
+                <td>{% if livroTransacao.status %}Finalizado{% else %}Em aberto{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

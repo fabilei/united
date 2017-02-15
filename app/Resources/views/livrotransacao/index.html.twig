@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Livrotransacaos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Quantidadecotas</th>
+                <th>Valorcotas</th>
+                <th>Tipooperacao</th>
+                <th>Status</th>
+                <th>Livtraid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livroTransacao in livroTransacaos %}
+            <tr>
+                <td><a href="{{ path('livrotransacao_show', { 'id': livroTransacao.livtraId }) }}">{{ livroTransacao.quantidadeCotas }}</a></td>
+                <td>{{ livroTransacao.valorCotas }}</td>
+                <td>{% if livroTransacao.tipoOperacao %}Yes{% else %}No{% endif %}</td>
+                <td>{% if livroTransacao.status %}Yes{% else %}No{% endif %}</td>
+                <td>{{ livroTransacao.livtraId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('livrotransacao_show', { 'id': livroTransacao.livtraId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('livrotransacao_edit', { 'id': livroTransacao.livtraId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('livrotransacao_new') }}">Create a new livroTransacao</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\LivroTransacao" table="livro_transacao" repository-class="AppBundle\Repository\LivroTransacaoRepository" >
+    <indexes>
+      <index name="conta_corrente_livro_transacoes_fk" columns="concor_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="livtra_id" columns="livtra_id"/>
+    </unique-constraints>
+    <id name="livtraId" type="bigint" column="livtra_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="quantidadeCotas" type="integer" column="quantidade_cotas" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="valorCotas" type="decimal" column="valor_cotas" precision="18" scale="8" nullable="false"/>
+    <field name="tipoOperacao" type="boolean" column="tipo_operacao" nullable="false"/>
+    <field name="status" type="boolean" column="status" nullable="false"/>
+  </entity>
+</doctrine-mapping>

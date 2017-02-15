@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Livrotransacao</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Quantidadecotas</th>
+                <td>{{ livroTransacao.quantidadeCotas }}</td>
+            </tr>
+            <tr>
+                <th>Valorcotas</th>
+                <td>{{ livroTransacao.valorCotas }}</td>
+            </tr>
+            <tr>
+                <th>Tipooperacao</th>
+                <td>{% if livroTransacao.tipoOperacao %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if livroTransacao.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Livtraid</th>
+                <td>{{ livroTransacao.livtraId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('livrotransacao_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('livrotransacao_edit', { 'id': livroTransacao.livtraId }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

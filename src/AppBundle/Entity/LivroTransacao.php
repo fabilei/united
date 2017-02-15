@@ -1,0 +1,170 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * LivroTransacao
+ */
+class LivroTransacao
+{
+    /**
+     * @var integer
+     */
+    private $quantidadeCotas;
+
+    /**
+     * @var string
+     */
+    private $valorCotas;
+
+    /**
+     * @var boolean
+     */
+    private $tipoOperacao;
+
+    /**
+     * @var boolean
+     */
+    private $status;
+
+    /**
+     * @var integer
+     */
+    private $livtraId;
+
+    /**
+     * @var \AppBundle\Entity\ContaCorrente
+     */
+    private $concor;
+
+
+    /**
+     * Set quantidadeCotas
+     *
+     * @param integer $quantidadeCotas
+     *
+     * @return LivroTransacao
+     */
+    public function setQuantidadeCotas($quantidadeCotas)
+    {
+        $this->quantidadeCotas = $quantidadeCotas;
+
+        return $this;
+    }
+
+    /**
+     * Get quantidadeCotas
+     *
+     * @return integer
+     */
+    public function getQuantidadeCotas()
+    {
+        return $this->quantidadeCotas;
+    }
+
+    /**
+     * Set valorCotas
+     *
+     * @param string $valorCotas
+     *
+     * @return LivroTransacao
+     */
+    public function setValorCotas($valorCotas)
+    {
+        $this->valorCotas = $valorCotas;
+
+        return $this;
+    }
+
+    /**
+     * Get valorCotas
+     *
+     * @return string
+     */
+    public function getValorCotas()
+    {
+        return $this->valorCotas;
+    }
+
+    /**
+     * Set tipoOperacao
+     *
+     * @param boolean $tipoOperacao
+     *
+     * @return LivroTransacao
+     */
+    public function setTipoOperacao($tipoOperacao)
+    {
+        $this->tipoOperacao = $tipoOperacao;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoOperacao
+     *
+     * @return boolean
+     */
+    public function getTipoOperacao()
+    {
+        return $this->tipoOperacao;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return LivroTransacao
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Get livtraId
+     *
+     * @return integer
+     */
+    public function getLivtraId()
+    {
+        return $this->livtraId;
+    }
+
+    /**
+     * Set concor
+     *
+     * @param \AppBundle\Entity\ContaCorrente $concor
+     *
+     * @return LivroTransacao
+     */
+    public function setConcor(\AppBundle\Entity\ContaCorrente $concor = null)
+    {
+        $this->concor = $concor;
+
+        return $this;
+    }
+
+    /**
+     * Get concor
+     *
+     * @return \AppBundle\Entity\ContaCorrente
+     */
+    public function getConcor()
+    {
+        return $this->concor;
+    }
+}

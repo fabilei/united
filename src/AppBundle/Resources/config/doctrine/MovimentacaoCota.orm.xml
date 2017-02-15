@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\MovimentacaoCota" table="movimentacao_cota">
+    <indexes>
+      <index name="conta_corrente_movimentacao_cotas_fk" columns="concor_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="movcot_id" columns="movcot_id"/>
+    </unique-constraints>
+    <id name="movcotId" type="bigint" column="movcot_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idConta" type="integer" column="id_conta" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idContaTerceiro" type="integer" column="id_conta_terceiro" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="quantidade" type="integer" column="quantidade" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="valorUnitario" type="decimal" column="valor_unitario" precision="18" scale="8" nullable="false"/>
+    <field name="valorTotal" type="decimal" column="valor_total" precision="18" scale="8" nullable="false"/>
+    <field name="datahora" type="datetime" column="datahora" nullable="false"/>
+  </entity>
+</doctrine-mapping>
